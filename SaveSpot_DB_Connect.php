@@ -1,9 +1,9 @@
 <?php
 
-$hostname="bvaughan23.info";
-$username="bvaughan";
-$password="Brl1a5xie";
-$dbname="Students";
+$hostname="savespotnow.com";
+$username="admin1";
+$password="admin";
+$dbname="savespotnow_db";
 
 $con = mysqli_connect($hostname, $username, $password, $dbname);
 
