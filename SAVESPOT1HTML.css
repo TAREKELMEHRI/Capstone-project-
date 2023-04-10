@@ -106,7 +106,7 @@ body {
 	color: #ffffff;
 	border: none;
 	border-radius: var(--border-radius);
-	outine: none;
+	outline: none;
 	cursor: pointer;
 	background: var(--color-primary);
 }
