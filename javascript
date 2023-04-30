@@ -1,6 +1,6 @@
-File Name: SaveSpot1.js
+/*File Name: SaveSpot1.js*/
 
-/*
+
 function setFormMessage(formElement, type, message) {
 	const messageElement = formElement.querySelector(".form__message");
 
@@ -38,17 +38,18 @@ loginForm.addEventListener("submit", e=> {
 
 setFormMessage(loginForm, "success", "You're logged in");
 	setFormMessage(loginForm, "error", "Invalid Username or Password");
-};
+});
 
+/*
 document.querySelectorAll(".form__input").forEach(inputElement =>){
 	
 }
+*/
+
+/*File Name: PartnerDashboard.css*/
 
 
-File Name: PartnerDashboard.css
 
-
-/*
 const image_input = document.querySelector("#image_input");
 var uploaded_image = ""; // link to data base
 
