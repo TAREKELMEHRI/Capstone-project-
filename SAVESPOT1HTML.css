@@ -32,11 +32,9 @@ body {
 	font: 500 1rem "Quicksand", sans-serif; 
 }
 
-
-.form--hidden {
+.partnerAccount{
 	display: none;
 }
-
 
 .form > *:first-child {
 	margin-top: 0;
@@ -110,7 +108,7 @@ body {
 	color: #ffffff;
 	border: none;
 	border-radius: var(--border-radius);
-	outine: none;
+	outline: none;
 	cursor: pointer;
 	background: var(--color-primary);
 }
@@ -118,8 +116,6 @@ body {
 .form__button:hover{
 	background: var(--color-primary-dark);
 }
-
-
 
 
 .form__text{
