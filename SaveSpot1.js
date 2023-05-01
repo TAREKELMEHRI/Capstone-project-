@@ -17,13 +17,13 @@ document.addEventListener("DOMContentLoaded", () => {
 	const createAccountForm = document.querySelector("#createAccount");
 });
 
-document.querySelector("linkCreateAccount").addEventListener("click", () => {
+document.querySelector("#linkCreateAccount").addEventListener("click", () => {
 	e.preventDefault();
 	loginForm.classList.add("form--hidden");
 	createAccountForm.classList.remove("form--hidden");
 });
 
-document.querySelector("linkLogin").addEventListener("click", () => {
+document.querySelector("#linkLogin").addEventListener("click", () => {
 	e.preventDefault();
 	createAccountForm.classList.add("form--hidden");
 	loginForm.classList.remove("form--hidden");
@@ -37,4 +37,4 @@ setFormMessage(loginForm, "success", "You're logged in");
 	setFormMessage(loginForm, "error", "Invalid Username or Password");
 });
 
-//document.querySelectorAll(".form__input").forEach(inputElement =>){
+
