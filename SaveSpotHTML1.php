@@ -23,7 +23,6 @@
 	
 		<button class="form__button" name="signinSubmit" type="SUBMIT">Submit</button>
 
-		//Not doing rn
 		<p class="form__text">
 			<a href="#" class="form__link">Forgot your password?</a>
 		</p>
@@ -106,7 +105,7 @@
 
         mysqli_select_db ($conn , $dbname);
 
-		$sql = "SELECT * FROM `Partner_users` WHERE username = '$user' AND password = '$pass'";
+		$sql = "SELECT * FROM `Partner_users` WHERE (username = '$user' AND password = '$pass') or (email = '$user' AND password = '$pass')";
 		$result = mysqli_query($conn, $sql);
 
 		$numrows = mysqli_num_rows($result);
