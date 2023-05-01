@@ -9,7 +9,7 @@
 </head>
 <body>
 <div class="container">
-	<form action="SaveSpotHTML1.php" method= "post" class="form" id="login">
+	<form action="index.php" method= "post" class="form" id="login">
 		<h1 class="form__title">SaveSpot Partner Login</h1>
 		<div class="form__message form__message--error"></div> 
 		<div class="form__input-group"> 
@@ -31,7 +31,7 @@
 		</p>
 	</form>
 		
-	<form class="form form--hidden" action="SaveSpotHTML1.php" method= "post" id="createAccount">
+	<form class="form form--hidden" action="index.php" method= "post" id="createAccount">
 		<h1 class="form__title">Create Partner Account</h1>
 		<div class="form__message form__message--error"></div> 
 		<div class="form__input-group"> 
