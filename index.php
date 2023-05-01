@@ -23,10 +23,6 @@
 			</div>
 		
 			<button class="form__button" name="signinSubmit" type="SUBMIT">Submit</button>
-
-			<p class="form__text">
-				<a href="#" class="form__link">Forgot your password?</a>
-			</p>
 		</form>
 		<button id="createAccount">Not a Partner With SaveSpot? Click Here</button>
 	</div>
