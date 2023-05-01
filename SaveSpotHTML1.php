@@ -9,7 +9,7 @@
 </head>
 <body>
 <div class="container">
-	<form action="FinalPartnerDashboard.php" method= "post" class="form" id="login">
+	<form action="SaveSpotHTML1.php" method= "post" class="form" id="login">
 		<h1 class="form__title">SaveSpot Partner Login</h1>
 		<div class="form__message form__message--error"></div> 
 		<div class="form__input-group"> 
@@ -21,7 +21,7 @@
 			<div class="form__input-error-message"></div>
 		</div>
 	
-		<button class="form__button" type="SUBMIT">Submit</button>
+		<button class="form__button" name="signinSubmit" type="SUBMIT">Submit</button>
 
 		//Not doing rn
 		<p class="form__text">
@@ -59,15 +59,16 @@
 	</form> 
 
 	<?php
+	$servername = "72.167.58.111";
+	$username = "admin1";
+	$password = "admin";
+	$dbname = "savespotnow_db";
 	if(isset($_POST["createAccountSubmit"])){
-        $servername = "72.167.58.111";
-    	$username = "admin1";
-    	$password = "admin";
-    	$dbname = "savespotnow_db";
 
 		$un = $_POST["username"];
 		$email = $_POST["email"];
 		$pw = $_POST["password"];
+		$cpw = $_POST["cpassword"];
 
 
         $conn = mysqli_connect($servername, $username, $password);
@@ -78,11 +79,50 @@
 
         mysqli_select_db ($conn , $dbname);
 
-        $query = "INSERT INTO `Partner_users`(`username`, `email`, `password`) VALUES ('$un', '$email', '$pw');";
+
+		if($cpw == $pw){
+			header("Location: http://savespotnow.com/FinalPartnerDashboard.php");
+			$query = "INSERT INTO `Partner_users`(`username`, `email`, `password`) VALUES ('$un', '$email', '$pw');";
+			mysqli_query($conn, $query);
+			mysqli_close($conn);
+
+			exit;
+		}
+		else{
+			mysqli_close($conn);
+		}
 		
-        mysqli_query($conn, $query);
-        mysqli_close($conn);
 	}
+	
+	if(isset($_POST["signinSubmit"])){
+		$user = $_POST["un"];
+		$pass = $_POST["pw"];
+
+        $conn = mysqli_connect($servername, $username, $password);
+
+        if (!$conn) {
+            die("Connection failed: " . mysqli_connect_error());
+        }
+
+        mysqli_select_db ($conn , $dbname);
+
+		$sql = "SELECT * FROM `Partner_users` WHERE username = '$user' AND password = '$pass'";
+		$result = mysqli_query($conn, $sql);
+
+		$numrows = mysqli_num_rows($result);
+		
+		if($numrows > 0){
+			header("Location: http://savespotnow.com/FinalPartnerDashboard.php");
+			mysqli_close($conn);
+			exit;
+		}
+		else{
+			echo 'Username or Password is incorrect';
+			mysqli_close($conn);
+		}
+		
+	}
+	
 	?>
 </div>
 </body>
