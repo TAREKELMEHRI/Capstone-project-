@@ -9,53 +9,61 @@
 </head>
 <body>
 <div class="container">
-	<form action="index.php" method= "post" class="form" id="login">
-		<h1 class="form__title">SaveSpot Partner Login</h1>
-		<div class="form__message form__message--error"></div> 
-		<div class="form__input-group"> 
-			<input type="text" name = "un" class="form__input" autofocus placeholder="Username or email">
-			<div class="form__input-error-message"></div>
-		</div>
-		<div class="form__input-group"> 
-			<input type="password" name = "pw" class="form__input" autofocus placeholder="Password">
-			<div class="form__input-error-message"></div>
-		</div>
-	
-		<button class="form__button" name="signinSubmit" type="SUBMIT">Submit</button>
-
-		<p class="form__text">
-			<a href="#" class="form__link">Forgot your password?</a>
-		</p>
-		<p class="form__text">
-			<a id="linkCreateAccount" href="./" class="form__link">Not a Partner With SaveSpot? Click Here</a>
-		</p>
-	</form>
+	<div id="signIn" class="signIn">
+		<form action="index.php" method= "post" class="form" id="login">
+			<h1 class="form__title">SaveSpot Partner Login</h1>
+			<div class="form__message form__message--error"></div> 
+			<div class="form__input-group"> 
+				<input type="text" name = "un" class="form__input" autofocus placeholder="Username or email">
+				<div class="form__input-error-message"></div>
+			</div>
+			<div class="form__input-group"> 
+				<input type="password" name = "pw" class="form__input" autofocus placeholder="Password">
+				<div class="form__input-error-message"></div>
+			</div>
 		
-	<form class="form form--hidden" action="index.php" method= "post" id="createAccount">
-		<h1 class="form__title">Create Partner Account</h1>
-		<div class="form__message form__message--error"></div> 
-		<div class="form__input-group"> 
-			<input type="text" name="username" class="form__input" autofocus placeholder="Username">
-			<div class="form__input-error-message"></div>
-		</div>
-		<div class="form__input-group"> 
-			<input type="text" name="email" class="form__input" autofocus placeholder="Email Address">
-			<div class="form__input-error-message"></div>
-		</div>
-	<div class="form__input-group"> 
-			<input type="password" name="password" class="form__input" autofocus placeholder="Password">
-			<div class="form__input-error-message"></div>
-		</div>
-	<div class="form__input-group"> 
-			<input type="password" name="cpassword" class="form__input" autofocus placeholder="Confirm Password">
-			<div class="form__input-error-message"></div>
-		</div> 
-		<button class="form__button" name="createAccountSubmit" type="SUBMIT">Submit</button> 
-		<p class="form__text">
-			<a id="linkLogin" href="./" class="form__link">Already have an Account? Click Here</a>
-		</p>
+			<button class="form__button" name="signinSubmit" type="SUBMIT">Submit</button>
 
-	</form> 
+			<p class="form__text">
+				<a href="#" class="form__link">Forgot your password?</a>
+			</p>
+		</form>
+		<button id="createAccount">Not a Partner With SaveSpot? Click Here</button>
+	</div>
+	<div id="createPartnerAccount" class="partnerAccount">
+		<form class="form--hidden" action="index.php" method= "post" id="createAccount">
+			<h1 class="form__title">Create Partner Account</h1>
+			<div class="form__message form__message--error"></div> 
+			<div class="form__input-group"> 
+				<input type="text" name="username" class="form__input" autofocus placeholder="Username">
+				<div class="form__input-error-message"></div>
+			</div>
+			<div class="form__input-group"> 
+				<input type="text" name="email" class="form__input" autofocus placeholder="Email Address">
+				<div class="form__input-error-message"></div>
+			</div>
+			<div class="form__input-group"> 
+					<input type="password" name="password" class="form__input" autofocus placeholder="Password">
+					<div class="form__input-error-message"></div>
+				</div>
+			<div class="form__input-group"> 
+				<input type="password" name="cpassword" class="form__input" autofocus placeholder="Confirm Password">
+				<div class="form__input-error-message"></div>
+			</div> 
+			<button class="form__button" name="createAccountSubmit" type="SUBMIT">Submit</button> 
+		</form> 
+		<button id="SignIn">Already have an Account? Click Here</button>
+	</div>
+	<script>
+		document.getElementById("createAccount").onclick = function() {
+			document.getElementById("signIn").style.display = "none";
+			document.getElementById("createPartnerAccount").style.display = "block";
+		}
+		document.getElementById("SignIn").onclick = function() {
+			document.getElementById("createPartnerAccount").style.display = "none";
+			document.getElementById("signIn").style.display = "block";
+		}
+	</script>
 
 	<?php
 	$servername = "72.167.58.111";

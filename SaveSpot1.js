@@ -1,3 +1,4 @@
+/*
 function setFormMessage(formElement, type, message) {
 	const messageElement = formElement.querySelector(".form__message");
 
@@ -36,5 +37,7 @@ loginForm.addEventListener("submit", e=> {
 setFormMessage(loginForm, "success", "You're logged in");
 	setFormMessage(loginForm, "error", "Invalid Username or Password");
 });
+*/
+
 
 
