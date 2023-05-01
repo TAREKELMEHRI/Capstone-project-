@@ -34,19 +34,58 @@
 						<option value="3:00PM">3</option>
 						<option value="3:00PM">4</option>
 						<option value="3:00PM">5</option>
-						<option value="3:00PM">6</option>
-
-
-
-
-
-					
-				</select>
+						<option value="3:00PM">6</option>					
+					</select>
 				</form>
 				
 			</div>
 		</div>
 			<button style="margin-top: 12px" class="form__button" type="SUBMIT">Submit</button>
 		</form>
+
+		<?php
+			session_start();
+			if (!isset($_SESSION['totalViews'])){
+				$_SESSION['totalViews'] = 1;
+			}
+			else{
+				++$_SESSION['totalViews'];
+			}
+			echo "<div class='topright'>Pages viewed by Brianna Vaughan: ".$_SESSION['totalViews']."</div>";
+			if(isset($_POST["submit"])){
+				$servername = "savespotnow.com";
+				$username = "SaveSpot";
+				$password = "SaveSpotNow";
+				$dbname = "savespotnow_db";
+
+				$conn = mysqli_connect($servername, $username, $password);
+
+				if (!$conn) {
+					die("Connection failed: " . mysqli_connect_error());
+				}
+
+				mysqli_select_db ($conn , $dbname);
+
+				$query = "SELECT `EX_ID`, `DATE`, `TIME_UPDATED`, `USD`, `AUD`, `CAD`, `CHF`, `CNY`, `EUR`, `GBP`, `HKD` FROM `EXCHANGERATE`";
+
+				$results = mysqli_query($conn, $query);
+				$dbInfo = mysqli_fetch_array($results, MYSQLI_ASSOC);
+
+				echo "<p>";
+				echo $_POST["amount"]." USD is ".$_POST["amount"] * $dbInfo[$_POST["currency"]]." ".$_POST["currency"]."<br>";
+				echo "</p>";
+
+				echo "<p>";
+				echo "Date: ".$dbInfo["DATE"]."<br>";
+				echo "Time Updated: ".$dbInfo["TIME_UPDATED"]."<br>";
+				echo "Conversion rates when USD = 1: <br>";
+				echo "CAD: ".$dbInfo["CAD"]."<br>";
+				echo "EUR: ".$dbInfo["EUR"]."<br>";
+				echo "GBP: ".$dbInfo["GBP"]."<br>";
+				echo "</p>";
+
+				mysqli_close($conn);
+			}
+		?>
 	</div>
 	</body>
