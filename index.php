@@ -1,3 +1,6 @@
+<?php
+	session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -87,6 +90,15 @@
 			header("Location: http://savespotnow.com/FinalPartnerDashboard.php");
 			$query = "INSERT INTO `Partner_users`(`username`, `email`, `password`) VALUES ('$un', '$email', '$pw');";
 			mysqli_query($conn, $query);
+			
+			$q2 = $sql = "SELECT ID FROM `Partner_users` WHERE (username = '$un' AND email = '$email')";
+			
+			$result = mysqli_query($conn, $q2);
+        
+            $row = mysqli_fetch_assoc($result);
+		    $id = $row['ID'];
+		    $_SESSION['userID'] = $id;
+		    
 			mysqli_close($conn);
 
 			exit;
@@ -109,12 +121,18 @@
 
         mysqli_select_db ($conn , $dbname);
 
-		$sql = "SELECT * FROM `Partner_users` WHERE (username = '$user' AND password = '$pass') or (email = '$user' AND password = '$pass')";
-		$result = mysqli_query($conn, $sql);
-
-		$numrows = mysqli_num_rows($result);
+		$sql = "SELECT ID FROM `Partner_users` WHERE (username = '$user' AND password = '$pass') or (email = '$user' AND password = '$pass')";
 		
+		$result = mysqli_query($conn, $sql);
+        
+            $row = mysqli_fetch_assoc($result);
+		    $id = $row['ID'];
+		    $_SESSION['userID'] = $id;
+        
+        
+		$numrows = mysqli_num_rows($result);
 		if($numrows > 0){
+
 			header("Location: http://savespotnow.com/FinalPartnerDashboard.php");
 			mysqli_close($conn);
 			exit;
@@ -122,8 +140,7 @@
 		else{
 			echo 'Username or Password is incorrect';
 			mysqli_close($conn);
-		}
-		
+		}	
 	}
 	
 	?>
